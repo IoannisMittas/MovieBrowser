@@ -1,12 +1,14 @@
 package com.mittas.moviebrowser.di
 
 import ApiModule
+import com.mittas.moviebrowser.ui.screen.MovieListActivity
 
 import dagger.Component
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [SchedulersModule::class, RepositoriesModule::class, ApiModule::class, ViewModelsModule::class])
+@Component(modules = [SchedulersModule::class, ViewModelsModule::class])
 interface MovieBrowserComponent {
-    //todo injections here
+
+    fun inject(activity: MovieListActivity)
 }
