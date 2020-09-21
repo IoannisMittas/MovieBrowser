@@ -2,9 +2,11 @@ package com.mittas.moviebrowser.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.mittas.moviebrowser.ui.screen.MovieListViewModel
 import dagger.Binds
 import dagger.MapKey
 import dagger.Module
+import dagger.multibindings.IntoMap
 import javax.inject.Inject
 import javax.inject.Provider
 import javax.inject.Singleton
@@ -29,6 +31,9 @@ abstract class ViewModelsModule {
     @Binds
     internal abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory
 
-    // todo inject viewmodels here
+    @Binds
+    @IntoMap
+    @ViewModelKey(MovieListViewModel::class)
+    internal abstract fun bindMovieListViewModel(viewModel: MovieListViewModel): ViewModel
 
 }
