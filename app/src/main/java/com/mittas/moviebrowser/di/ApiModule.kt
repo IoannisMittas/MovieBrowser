@@ -1,3 +1,5 @@
+package com.mittas.moviebrowser.di
+
 import com.mittas.moviebrowser.data.network.Endpoints
 import com.mittas.moviebrowser.data.network.RemoteApiFactories
 import com.mittas.moviebrowser.data.network.movies.MoviesRemoteApi
