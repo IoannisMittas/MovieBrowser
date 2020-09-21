@@ -1,6 +1,7 @@
 package com.mittas.moviebrowser.ui.screen
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -15,6 +16,8 @@ class MovieListActivity : AppCompatActivity() {
     lateinit var viewModelFactory: ViewModelProvider.Factory
     private lateinit var viewModel: MovieListViewModel
 
+    private lateinit var adapter: MovieListAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         DIHelper.appComponent.inject(this)
         super.onCreate(savedInstanceState)
@@ -24,7 +27,11 @@ class MovieListActivity : AppCompatActivity() {
     }
 
     private fun setupUI() {
+        adapter = MovieListAdapter { onMovieClicked(it) }
+    }
 
+    private fun onMovieClicked(movie: Movie) {
+        Toast.makeText(this, movie.title, Toast.LENGTH_SHORT).show()
     }
 
     private fun setupViewModel() {
@@ -35,8 +42,7 @@ class MovieListActivity : AppCompatActivity() {
     }
 
     private fun onMoviesUpdated(movies: List<Movie>) {
-
+        adapter.setMovies(movies)
     }
-
 
 }
