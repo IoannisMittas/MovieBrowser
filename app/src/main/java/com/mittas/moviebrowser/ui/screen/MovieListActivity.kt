@@ -27,7 +27,7 @@ class MovieListActivity : AppCompatActivity() {
     }
 
     private fun setupUI() {
-        adapter = MovieListAdapter { onMovieClicked(it) }
+        adapter = MovieListAdapter (this){ onMovieClicked(it) }
     }
 
     private fun onMovieClicked(movie: Movie) {
