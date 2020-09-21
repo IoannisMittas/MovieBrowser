@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.mittas.moviebrowser.R
 import com.mittas.moviebrowser.domain.entity.movies.Movie
+import com.mittas.moviebrowser.ui.utils.loadImage
 
 class MovieListAdapter(private val context: Context, private val clickAction: (Movie) -> Unit) :
     RecyclerView.Adapter<MovieListAdapter.ViewHolder>() {
@@ -43,7 +44,7 @@ class MovieListAdapter(private val context: Context, private val clickAction: (M
         private var subtitleTextView: TextView = itemView.findViewById(R.id.subtitleTextView)
 
         fun bind(movie: Movie) {
-            // todo imageloader image load
+            movie.imageUrl?.let { imageView.loadImage(it) }
 
             priceTextView.text = movie.price.toString()
 
