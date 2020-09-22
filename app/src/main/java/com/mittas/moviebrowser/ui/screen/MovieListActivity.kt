@@ -3,15 +3,17 @@ package com.mittas.moviebrowser.ui.screen
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mittas.moviebrowser.R
 import com.mittas.moviebrowser.di.DIHelper
 import com.mittas.moviebrowser.domain.entity.movies.Movie
+import com.mittas.moviebrowser.ui.utils.Resource
+import com.mittas.moviebrowser.ui.utils.ResourceState
 import com.mittas.moviebrowser.ui.utils.setDivider
+import com.mittas.moviebrowser.ui.utils.startRefreshing
+import com.mittas.moviebrowser.ui.utils.stopRefreshing
 import kotlinx.android.synthetic.main.activity_movie_list.*
 import javax.inject.Inject
 
@@ -38,6 +40,8 @@ class MovieListActivity : AppCompatActivity() {
         moviesRecyclerView.adapter = adapter
         moviesRecyclerView.layoutManager = LinearLayoutManager(this)
         moviesRecyclerView.setDivider(R.drawable.divider)
+
+        swipeRefreshLayout.setOnRefreshListener { viewModel.fetchMovies() }
     }
 
     private fun onMovieClicked(movie: Movie) {
@@ -51,8 +55,14 @@ class MovieListActivity : AppCompatActivity() {
         })
     }
 
-    private fun onMoviesUpdated(movies: List<Movie>) {
-        adapter.setMovies(movies)
-    }
+    private fun onMoviesUpdated(resource: Resource<List<Movie>>?) {
+        resource?.let {
+            when (it.state) {
+                ResourceState.LOADING -> swipeRefreshLayout.startRefreshing()
+                ResourceState.SUCCESS, ResourceState.ERROR -> swipeRefreshLayout.stopRefreshing()
+            }
 
+            it.data?.let { movies -> adapter.setMovies(movies) }
+        }
+    }
 }
