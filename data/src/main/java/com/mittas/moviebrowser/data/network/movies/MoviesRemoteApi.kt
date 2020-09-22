@@ -9,5 +9,5 @@ interface MoviesRemoteApi {
     fun getMovieOffers(): Single<MovieOffersResponse>
 
     @GET("movie-data")
-    fun getMovieData(): Single<List<MovieData>>
+    fun getMovieData(): Single<MovieDataResponse>
 }

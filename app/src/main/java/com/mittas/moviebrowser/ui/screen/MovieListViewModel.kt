@@ -29,8 +29,8 @@ class MovieListViewModel @Inject constructor(private val getMoviesUseCase: GetMo
             getMoviesUseCase.get()
                 .subscribe({ movies ->
                     _movies.postValue(movies)
-                }, {
-                    Timber.d("Error on fetching movies.")
+                }, { t ->
+                    Timber.d(t, "Error on fetching movies.")
                 })
         )
     }

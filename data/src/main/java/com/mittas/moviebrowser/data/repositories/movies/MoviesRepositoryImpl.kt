@@ -15,7 +15,7 @@ class MoviesRepositoryImpl @Inject constructor(private val moviesRemoteApi: Movi
             .flatMap { moviesWithNoTitle ->
                 moviesRemoteApi.getMovieData().map { movieDataResponse ->
                     moviesWithNoTitle.forEach { movieDomain ->
-                        movieDataResponse.firstOrNull { it.movieId == movieDomain.id }?.let {
+                        movieDataResponse.movieDataList.firstOrNull { it.movieId == movieDomain.id }?.let {
                             movieDomain.title = it.title ?: ""
                             movieDomain.subTitle = it.subtitle ?: ""
                         }
