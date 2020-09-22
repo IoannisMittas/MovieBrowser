@@ -8,8 +8,8 @@ data class MovieOffersResponse(
 ) {
 
     data class MovieOffer(
-        @SerializedName("movie_id") val movieId: String?,
-        val price: Float?,
+        @SerializedName("movie_id") val movieId: Int?,
+        val price: String?,
         @SerializedName("image") val imageUrlPath: String? ,
         @SerializedName("available") val isAvailable: Boolean
     )

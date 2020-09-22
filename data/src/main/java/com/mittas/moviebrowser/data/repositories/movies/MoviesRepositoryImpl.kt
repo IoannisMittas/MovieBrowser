@@ -30,7 +30,7 @@ class MoviesRepositoryImpl @Inject constructor(private val moviesRemoteApi: Movi
 private fun MovieOffersResponse.mapToDomain(): List<Movie> {
     val movies = mutableListOf<Movie>()
 
-    movieOffers?.filterNotNull()?.filter { it.price != null && !it.movieId.isNullOrEmpty() }?.forEach {
+    movieOffers?.filterNotNull()?.filter { it.price != null && it.movieId != null }?.forEach {
         val movie = Movie(
             id = it.movieId!!,
             price = it.price!!,

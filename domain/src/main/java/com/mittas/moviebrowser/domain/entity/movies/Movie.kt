@@ -1,8 +1,8 @@
 package com.mittas.moviebrowser.domain.entity.movies
 
 data class Movie(
-    val id: String,
-    val price: Float,
+    val id: Int,
+    val price: String,
     val imageUrl: String?,
     val isAvailable: Boolean
 ) {
