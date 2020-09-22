@@ -48,17 +48,22 @@ class MovieListAdapter(private val context: Context, private val clickAction: (M
 
             priceTextView.text = movie.price.toString()
 
-            // todo refactor this
-//            val availableText = if (movie.isAvailable)
-//                context.getString(R.string.available_movie)
-//            else
-//                context.getString(R.string.not_available_movie)
-//            availableTextView.text = availableText
+            if(movie.isAvailable) setAvailableTextView() else setNotAvailableTextView()
 
             titleTextView.text = movie.title
             subtitleTextView.text = movie.subTitle
 
             itemView.setOnClickListener { clickAction(movie) }
+        }
+
+        private fun setAvailableTextView() {
+            availableTextView.text =  context.getString(R.string.available_movie)
+            availableTextView.setTextColor(context.resources.getColor(R.color.text_green, null))
+        }
+
+        private fun setNotAvailableTextView() {
+            availableTextView.text =  context.getString(R.string.not_available_movie)
+            availableTextView.setTextColor(context.resources.getColor(R.color.text_red, null))
         }
     }
 }
