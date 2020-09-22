@@ -21,8 +21,13 @@ Here is a helpful diagram of the architecture, which we could say it's the "Andr
 
 ![Clean Android](https://miro.medium.com/max/1888/1*vcnYWWn_zhNk6I30meBaPg.png)
 
-In addition, MVVM design pattern is used, with the help of LiveData and ViewModel. A Resource class is used in the presentation module, in order to encapsulate the data state
+In addition, MVVM design pattern is used, with the help of LiveData and ViewModel.
+
+A Resource class is used in the presentation module, in order to encapsulate the data state
 (LOADING, SUCCESS, ERROR). This is used, for example, in order to begin and stop the loading animation. 
+
+Finally, rxjava is used for the network calls, but due to the nature of the architecture, it could be easily changed 
+with coroutines.  
 
 ### Testing
 Tests were written for testing the viewmodel, the usecase, and the repository. The tests exist in test directory, in each respected module (app, data, domain).
@@ -30,7 +35,7 @@ Tests were written for testing the viewmodel, the usecase, and the repository. T
 ## Tools
 RxJava3\
 RxAndroid\
-Dagger2
+Dagger2\
 Retrofit\
 OkHttp\
 JUnit\

@@ -35,8 +35,7 @@ class MovieListActivity : AppCompatActivity() {
     }
 
     private fun setupUI() {
-        adapter =
-            MovieListAdapter(this) { onMovieClicked(it) }
+        adapter = MovieListAdapter(this) { onMovieClicked(it) }
 
         moviesRecyclerView.adapter = adapter
         moviesRecyclerView.layoutManager = LinearLayoutManager(this)
