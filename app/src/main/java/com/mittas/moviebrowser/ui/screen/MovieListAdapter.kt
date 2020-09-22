@@ -46,7 +46,7 @@ class MovieListAdapter(private val context: Context, private val clickAction: (M
         fun bind(movie: Movie) {
             movie.imageUrl?.let { imageView.loadImage(it) }
 
-            priceTextView.text = movie.price.toString()
+            priceTextView.text = movie.price
 
             if(movie.isAvailable) setAvailableTextView() else setNotAvailableTextView()
 
