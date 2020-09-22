@@ -2,9 +2,9 @@ package com.mittas.moviebrowser.data.network.movies
 
 import com.google.gson.annotations.SerializedName
 
-data class MovieOfferResponse(
+data class MovieOffersResponse(
     @SerializedName("image_base") val imageBaseUrl: String?,
-    @SerializedName("movie_offers") val movieOffers: List<MovieOffer>
+    @SerializedName("movie_offers") val movieOffers: List<MovieOffer?>?
 ) {
 
     data class MovieOffer(

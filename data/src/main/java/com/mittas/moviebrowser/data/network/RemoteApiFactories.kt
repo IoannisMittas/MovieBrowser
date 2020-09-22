@@ -6,7 +6,7 @@ import com.mittas.moviebrowser.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
@@ -20,7 +20,7 @@ object RemoteApiFactories {
 
     private fun <T> createRetrofitApi(baseUrl: String, api: Class<T>): T {
         return Retrofit.Builder()
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create(createGson()))
             .baseUrl(baseUrl)
             .client(createOkHttpClient())

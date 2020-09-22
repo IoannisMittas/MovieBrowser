@@ -6,7 +6,7 @@ import retrofit2.http.GET
 interface MoviesRemoteApi {
 
     @GET("movie-offers")
-    fun getMovieOffers(): Single<MovieOfferResponse>
+    fun getMovieOffers(): Single<MovieOffersResponse>
 
     @GET("movie-data")
     fun getMovieData(): Single<List<MovieData>>

@@ -14,8 +14,9 @@ class GetMoviesUseCase @Inject constructor(
     @Named("postScheduler") override val postScheduler: Scheduler
 ) : BaseRxUseCase() {
 
-    fun get(): Single<List<Movie>> =
-        moviesRepository.getMovies()
+    fun get(): Single<List<Movie>> {
+        return moviesRepository.getMovies()
             .subscribeOn(workScheduler)
             .observeOn(postScheduler)
+    }
 }
