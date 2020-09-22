@@ -58,9 +58,6 @@
             android:textSize="14sp"
             app:layout_constraintTop_toTopOf="@id/priceTextView"
             tools:text="Every man" />
-
-
     </LinearLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
