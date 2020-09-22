@@ -1,4 +1,4 @@
-package com.mittas.moviebrowser.ui.screen
+package com.mittas.moviebrowser.ui.screen.movies
 
 import android.content.Context
 import android.view.LayoutInflater

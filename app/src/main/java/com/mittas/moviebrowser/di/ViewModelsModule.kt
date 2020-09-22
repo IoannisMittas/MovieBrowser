@@ -2,7 +2,7 @@ package com.mittas.moviebrowser.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.mittas.moviebrowser.ui.screen.MovieListViewModel
+import com.mittas.moviebrowser.ui.screen.movies.MovieListViewModel
 import dagger.Binds
 import dagger.MapKey
 import dagger.Module
